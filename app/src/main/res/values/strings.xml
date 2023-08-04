@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Tasty Chornomorsk</string>
+    <string name="address">Адреса:</string>
+    <string name="link">Посилання:</string>
 </resources>
