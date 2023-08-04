@@ -29,85 +29,85 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.tastychornomorsk.R
 import com.example.tastychornomorsk.data.LocalPlacesDataProvider
 import com.example.tastychornomorsk.model.Place
-import com.example.tastychornomorsk.ui.InfoCard
+import com.example.tastychornomorsk.ui.components.InfoCard
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
 
 @Composable
 fun PlaceDetail(
     selectedPlace: Place,
-    onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val scrollState = rememberScrollState()
 
-    Box(
+    Column(
         modifier = modifier
+            .padding(dimensionResource(R.dimen.padding_medium))
             .verticalScroll(scrollState)
     ) {
-        Column {
-            InfoCard {
-                Image(
-                    painter = painterResource(selectedPlace.imageResourceId),
-                    contentDescription = selectedPlace.name,
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    alignment = Alignment.Center,
-                    contentScale = ContentScale.Crop
+        InfoCard {
+            Image(
+                painter = painterResource(selectedPlace.imageResourceId),
+                contentDescription = selectedPlace.name,
+                modifier = Modifier
+                    .fillMaxWidth(),
+                alignment = Alignment.Center,
+                contentScale = ContentScale.Crop
+            )
+        }
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
+        InfoCard {
+            Column(
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
+            ) {
+                Text(
+                    text = selectedPlace.details,
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
-            InfoCard {
-                Column(
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
-                ) {
-                    Text(
-                        text = selectedPlace.details,
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                }
+        }
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
+        InfoCard {
+            Row(
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(R.string.address),
+                    modifier = Modifier.weight(1f),
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text(
+                    text = selectedPlace.address,
+                    style = MaterialTheme.typography.bodyMedium
+                )
             }
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
-            InfoCard {
-                Row(
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
-                    horizontalArrangement = Arrangement.End,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = stringResource(R.string.address),
-                        modifier = Modifier.weight(1f),
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                    Text(
-                        text = selectedPlace.address,
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                }
-            }
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
-            InfoCard {
-                Row(
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
-                    horizontalArrangement = Arrangement.End,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = stringResource(R.string.link),
-                        modifier = Modifier.weight(1f),
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                    val uriHandler = LocalUriHandler.current
-                    IconButton(
-                        onClick = {
-                            uriHandler.openUri(selectedPlace.link)
-                        }
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.instagram_96),
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxSize()
-                        )
+        }
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
+        InfoCard(
+            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))
+        ) {
+            Row(
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(R.string.link),
+                    modifier = Modifier.weight(1f),
+                    style = MaterialTheme.typography.titleMedium
+                )
+                val uriHandler = LocalUriHandler.current
+                IconButton(
+                    onClick = {
+                        uriHandler.openUri(selectedPlace.link)
                     }
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.instagram_96),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize()
+                    )
                 }
             }
         }
@@ -121,7 +121,6 @@ fun PlaceDetailPreview() {
         Surface {
             PlaceDetail(
                 selectedPlace = LocalPlacesDataProvider.getPlacesData()[0],
-                onBackPressed = { /*TODO*/ },
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
             )
         }

@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">Tasty Chornomorsk</string>
-    <string name="address">Адреса:</string>
-    <string name="link">Посилання:</string>
+
+    <string name="address">Address:</string>
+    <string name="link">Link:</string>
+
+    <string name="places_count">Quantity: %d</string>
+
+    <string name="restaurant">Restaurant</string>
+    <string name="cafe_or_coffee_shop">Cafe or coffee shop</string>
+    <string name="fast_food">Fast food</string>
+    <string name="pizza">Pizza</string>
+    <string name="sushi">Sushi</string>
+
+    <string name="places">Places</string>
+    <string name="place">Place</string>
+    <string name="back_button">Back</string>
 </resources>

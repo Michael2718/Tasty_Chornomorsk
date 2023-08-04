@@ -1,9 +1,10 @@
 package com.example.tastychornomorsk.ui
 
 import androidx.lifecycle.ViewModel
+import com.example.tastychornomorsk.data.LocalPlaceCategoriesDataProvider
 import com.example.tastychornomorsk.data.LocalPlacesDataProvider
-import com.example.tastychornomorsk.data.PlaceCategory
 import com.example.tastychornomorsk.model.Place
+import com.example.tastychornomorsk.model.PlaceCategory
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -12,14 +13,19 @@ class TastyViewModel: ViewModel() {
 
     private val _uiState = MutableStateFlow(
         TastyUiState(
-            currentCategory = PlaceCategory.Restaurant, // TODO: Change
+            categoriesList = LocalPlaceCategoriesDataProvider.getPlaceCategoriesData(),
+            currentCategory = LocalPlaceCategoriesDataProvider.defaultCategory,
             placesList = LocalPlacesDataProvider.getPlacesData(),
-            currentPlace = LocalPlacesDataProvider.getPlacesData().getOrElse(0) {
-                LocalPlacesDataProvider.defaultPlace
-            }
+            currentPlace = LocalPlacesDataProvider.defaultPlace
         )
     )
     val uiState: StateFlow<TastyUiState> = _uiState
+
+    fun updateCurrentCategory(selectedCategory: PlaceCategory) {
+        _uiState.update {
+            it.copy(currentCategory = selectedCategory)
+        }
+    }
 
     fun updateCurrentPlace(selectedPlace: Place) {
         _uiState.update {

@@ -11,26 +11,31 @@ object LocalPlaceCategoriesDataProvider {
             PlaceCategory(
                 1,
                 PlaceCategoryType.Restaurant,
-                R.drawable.categories_restaurant
+                0,
+                R.drawable.categories_restaurant,
             ),
             PlaceCategory(
                 2,
                 PlaceCategoryType.CafeOrCoffeeShop,
+                0,
                 R.drawable.categories_cafe_or_coffee_shop
             ),
             PlaceCategory(
                 3,
                 PlaceCategoryType.FastFood,
+                0,
                 R.drawable.categories_fast_food
             ),
             PlaceCategory(
                 4,
                 PlaceCategoryType.Pizza,
+                0,
                 R.drawable.categories_pizza
             ),
             PlaceCategory(
                 5,
                 PlaceCategoryType.Sushi,
+                0,
                 R.drawable.categories_sushi
             )
         )

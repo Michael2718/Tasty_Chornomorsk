@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tasty Chornomorsk</string>
+
+    <string name="address">Адреса:</string>
+    <string name="link">Посилання:</string>
+
+    <string name="places_count">Всього закладів: %d</string>
+
+    <string name="restaurant">Ресторан</string>
+    <string name="cafe_or_coffee_shop">Кафе або кав\'ярня</string>
+    <string name="fast_food">Фаст-фуд</string>
+    <string name="pizza">Піца</string>
+    <string name="sushi">Суші</string>
+
+    <string name="places">Заклади</string>
+    <string name="place">Обраний заклад</string>
+    <string name="back_button">Назад</string>
+</resources>

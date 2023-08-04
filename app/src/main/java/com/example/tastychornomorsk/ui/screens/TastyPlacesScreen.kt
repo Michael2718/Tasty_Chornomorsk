@@ -1,16 +1,12 @@
 package com.example.tastychornomorsk.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,33 +25,12 @@ import androidx.compose.ui.unit.dp
 import com.example.tastychornomorsk.R
 import com.example.tastychornomorsk.data.LocalPlacesDataProvider
 import com.example.tastychornomorsk.model.Place
-import com.example.tastychornomorsk.ui.ItemsList
+import com.example.tastychornomorsk.ui.components.ItemsList
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
-
-
-//@Composable
-//fun PlacesList(
-//    places: List<Place>,
-//    onClick: (Place) -> Unit,
-//    modifier: Modifier = Modifier
-//) {
-//    LazyColumn(
-//        contentPadding = PaddingValues(dimensionResource(R.dimen.padding_medium)),
-//        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
-//        modifier = modifier
-//    ) {
-//        items(places, key = { place -> place.id }) {place ->
-//            PlacesListItem(
-//                place = place,
-//                onItemClick = onClick
-//            )
-//        }
-//    }
-//}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PlacesListItem(
+fun PlacesListItem(
     place: Place,
     onItemClick: (Place) -> Unit,
     modifier: Modifier = Modifier

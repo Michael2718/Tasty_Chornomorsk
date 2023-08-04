@@ -1,4 +1,4 @@
-package com.example.tastychornomorsk.ui
+package com.example.tastychornomorsk.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
