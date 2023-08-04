@@ -29,28 +29,29 @@ import androidx.compose.ui.unit.dp
 import com.example.tastychornomorsk.R
 import com.example.tastychornomorsk.data.LocalPlacesDataProvider
 import com.example.tastychornomorsk.model.Place
+import com.example.tastychornomorsk.ui.ItemsList
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
 
-@Composable
-fun PlacesList(
-    places: List<Place>,
-    onClick: (Place) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    LazyColumn(
-        contentPadding = PaddingValues(dimensionResource(R.dimen.padding_medium)),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
-        modifier = modifier
-    ) {
-        items(places, key = { place -> place.id }) {place ->
-            PlacesListItem(
-                place = place,
-                onItemClick = onClick
-            )
-        }
-    }
 
-}
+//@Composable
+//fun PlacesList(
+//    places: List<Place>,
+//    onClick: (Place) -> Unit,
+//    modifier: Modifier = Modifier
+//) {
+//    LazyColumn(
+//        contentPadding = PaddingValues(dimensionResource(R.dimen.padding_medium)),
+//        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
+//        modifier = modifier
+//    ) {
+//        items(places, key = { place -> place.id }) {place ->
+//            PlacesListItem(
+//                place = place,
+//                onItemClick = onClick
+//            )
+//        }
+//    }
+//}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -136,10 +137,15 @@ private fun PlacesListImageItem(
 fun PlacesListPreview() {
     TastyChornomorskTheme {
         Surface {
-            PlacesList(
-                places = LocalPlacesDataProvider.getPlacesData(),
-                onClick = {}
-            )
+            ItemsList(
+                items = LocalPlacesDataProvider.getPlacesData(),
+                onClick = {},
+            ) { place, onItemClick ->
+                PlacesListItem(
+                    place = place,
+                    onItemClick = onItemClick
+                )
+            }
         }
     }
 }
