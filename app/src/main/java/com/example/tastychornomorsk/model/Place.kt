@@ -1,12 +1,15 @@
 package com.example.tastychornomorsk.model
 
 import androidx.annotation.DrawableRes
-import com.example.tastychornomorsk.data.LinkType
-import com.example.tastychornomorsk.data.PlaceCategory
+
+enum class LinkType {
+    Instagram,
+    Website
+}
 
 data class Place(
     val id: Int,
-    val category: PlaceCategory,
+    val type: PlaceCategoryType,
     val name : String,
     val details: String,
     val address: String,

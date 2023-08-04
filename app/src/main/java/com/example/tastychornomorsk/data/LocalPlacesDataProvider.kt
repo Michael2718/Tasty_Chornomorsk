@@ -1,7 +1,9 @@
 package com.example.tastychornomorsk.data
 
 import com.example.tastychornomorsk.R
+import com.example.tastychornomorsk.model.LinkType
 import com.example.tastychornomorsk.model.Place
+import com.example.tastychornomorsk.model.PlaceCategoryType
 
 object LocalPlacesDataProvider {
     val defaultPlace = getPlacesData()[0]
@@ -10,7 +12,7 @@ object LocalPlacesDataProvider {
         return listOf(
             Place(
                 id = 1,
-                category = PlaceCategory.Restaurant,
+                type = PlaceCategoryType.Restaurant,
                 name = "Oslo",
                 details = "Гриль-Паб у Чорноморську!\n" +
                         "У нас ви можете чудово провести час\uD83E\uDD18\uD83C\uDFFB\n" +
@@ -19,11 +21,11 @@ object LocalPlacesDataProvider {
                 address = "вул. Данченко 15а",
                 link = "https://instagram.com/oslo_pub?igshid=MzRlODBiNWFlZA==",
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.oslo
+                imageResourceId = R.drawable.places_oslo
             ),
             Place(
                 id = 2,
-                category = PlaceCategory.Restaurant,
+                type = PlaceCategoryType.Restaurant,
                 name = "Afalina",
                 details = "\uD83C\uDF0AВсе найкраще з видом на море.\n" +
                         "\uD83C\uDFB6Жива музика.\n" +
@@ -32,7 +34,7 @@ object LocalPlacesDataProvider {
                 address = "вул. Пляжна 35",
                 link = "https://instagram.com/afalina_restaurant_?igshid=MzRlODBiNWFlZA==",
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.afalina
+                imageResourceId = R.drawable.places_afalina
             )
         )
     }

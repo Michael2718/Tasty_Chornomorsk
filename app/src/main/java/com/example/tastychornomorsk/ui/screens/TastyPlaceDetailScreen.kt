@@ -33,7 +33,7 @@ import com.example.tastychornomorsk.ui.InfoCard
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
 
 @Composable
-private fun PlaceDetail(
+fun PlaceDetail(
     selectedPlace: Place,
     onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
@@ -120,7 +120,7 @@ fun PlaceDetailPreview() {
     TastyChornomorskTheme {
         Surface {
             PlaceDetail(
-                selectedPlace = LocalPlacesDataProvider.getPlacesData()[1],
+                selectedPlace = LocalPlacesDataProvider.getPlacesData()[0],
                 onBackPressed = { /*TODO*/ },
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
             )
