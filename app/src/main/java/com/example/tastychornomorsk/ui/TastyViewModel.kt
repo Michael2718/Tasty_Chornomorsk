@@ -15,7 +15,8 @@ class TastyViewModel: ViewModel() {
         TastyUiState(
             categoriesList = LocalPlaceCategoriesDataProvider.getPlaceCategoriesData(),
             currentCategory = LocalPlaceCategoriesDataProvider.defaultCategory,
-            placesList = LocalPlacesDataProvider.getPlacesData(),
+            placesMap = LocalPlacesDataProvider.getPlacesDataMap(),
+            currentPlacesList = LocalPlacesDataProvider.defaultPlacesList,
             currentPlace = LocalPlacesDataProvider.defaultPlace
         )
     )
@@ -23,7 +24,10 @@ class TastyViewModel: ViewModel() {
 
     fun updateCurrentCategory(selectedCategory: PlaceCategory) {
         _uiState.update {
-            it.copy(currentCategory = selectedCategory)
+            it.copy(
+                currentCategory = selectedCategory,
+                currentPlacesList = it.placesMap[selectedCategory.type]
+            )
         }
     }
 

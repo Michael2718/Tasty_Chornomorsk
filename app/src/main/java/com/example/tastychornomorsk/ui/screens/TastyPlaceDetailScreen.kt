@@ -2,7 +2,6 @@ package com.example.tastychornomorsk.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -47,7 +46,7 @@ fun PlaceDetail(
         InfoCard {
             Image(
                 painter = painterResource(selectedPlace.imageResourceId),
-                contentDescription = selectedPlace.name,
+                contentDescription = stringResource(selectedPlace.nameResourceId),
                 modifier = Modifier
                     .fillMaxWidth(),
                 alignment = Alignment.Center,
@@ -60,7 +59,7 @@ fun PlaceDetail(
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
             ) {
                 Text(
-                    text = selectedPlace.details,
+                    text = stringResource(selectedPlace.detailsResourceId),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -78,7 +77,7 @@ fun PlaceDetail(
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = selectedPlace.address,
+                    text = stringResource(selectedPlace.addressResourceId),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -98,9 +97,10 @@ fun PlaceDetail(
                     style = MaterialTheme.typography.titleMedium
                 )
                 val uriHandler = LocalUriHandler.current
+                val uriString = stringResource(selectedPlace.linkResourceId)
                 IconButton(
                     onClick = {
-                        uriHandler.openUri(selectedPlace.link)
+                        uriHandler.openUri(uriString)
                     }
                 ) {
                     Icon(
@@ -120,7 +120,7 @@ fun PlaceDetailPreview() {
     TastyChornomorskTheme {
         Surface {
             PlaceDetail(
-                selectedPlace = LocalPlacesDataProvider.getPlacesData()[0],
+                selectedPlace = LocalPlacesDataProvider.defaultPlace!!,
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
             )
         }

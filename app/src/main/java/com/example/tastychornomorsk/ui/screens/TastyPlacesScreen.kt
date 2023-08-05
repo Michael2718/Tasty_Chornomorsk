@@ -19,12 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tastychornomorsk.R
 import com.example.tastychornomorsk.data.LocalPlacesDataProvider
 import com.example.tastychornomorsk.model.Place
+import com.example.tastychornomorsk.model.PlaceCategoryType
 import com.example.tastychornomorsk.ui.components.ItemsList
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
 
@@ -59,13 +61,13 @@ fun PlacesListItem(
                     .weight(1f)
             ) {
                 Text(
-                    text = place.name,
+                    text = stringResource(place.nameResourceId),
                     modifier = Modifier
                         .padding(bottom = dimensionResource(R.dimen.card_text_vertical_space)),
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = place.details,
+                    text = stringResource(place.detailsResourceId),
                     modifier = Modifier
                         .padding(bottom = dimensionResource(R.dimen.card_text_vertical_space)),
                     color = MaterialTheme.colorScheme.secondary,
@@ -87,7 +89,7 @@ private fun PlacesListImageItem(
     ) {
        Image(
            painter = painterResource(place.imageResourceId),
-           contentDescription = place.name,
+           contentDescription = stringResource(place.nameResourceId),
            modifier = Modifier.align(Alignment.Center),
            contentScale = ContentScale.Fit
        )
@@ -113,7 +115,7 @@ fun PlacesListPreview() {
     TastyChornomorskTheme {
         Surface {
             ItemsList(
-                items = LocalPlacesDataProvider.getPlacesData(),
+                items = LocalPlacesDataProvider.getPlacesDataMap()[PlaceCategoryType.Restaurant]!!,
                 onClick = {},
             ) { place, onItemClick ->
                 PlacesListItem(

@@ -28,7 +28,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.tastychornomorsk.R
-import com.example.tastychornomorsk.data.LocalPlaceCategoriesDataProvider
 import com.example.tastychornomorsk.ui.components.ItemsList
 import com.example.tastychornomorsk.ui.TastyViewModel
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
@@ -87,7 +86,7 @@ fun TastyChornomorskApp(
             }
             composable(TastyScreen.Places.name) {
                 ItemsList(
-                    items = uiState.placesList, // TODO: Getting different lists(map?) from viewModel
+                    items = uiState.currentPlacesList!!, // TODO: Getting different lists(map?) from viewModel
                     onClick = {
                         viewModel.updateCurrentPlace(it)
                         navController.navigate(TastyScreen.Place.name)
@@ -101,7 +100,7 @@ fun TastyChornomorskApp(
             }
             composable(TastyScreen.Place.name) {
                 PlaceDetail(
-                    selectedPlace = uiState.currentPlace
+                    selectedPlace = uiState.currentPlace!!
                 )
             }
         }
@@ -144,7 +143,7 @@ fun TastyAppBar(
     )
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, locale = "uk")
 @Composable
 fun SportsAppCompactPreview() {
     TastyChornomorskTheme {
