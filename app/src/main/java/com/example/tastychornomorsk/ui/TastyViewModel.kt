@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
-class TastyViewModel: ViewModel() {
+class TastyViewModel : ViewModel() {
 
     private val _uiState = MutableStateFlow(
         TastyUiState(

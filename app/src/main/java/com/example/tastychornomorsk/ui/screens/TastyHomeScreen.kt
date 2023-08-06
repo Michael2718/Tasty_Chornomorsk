@@ -1,6 +1,7 @@
 package com.example.tastychornomorsk.ui.screens
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -29,6 +30,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.tastychornomorsk.R
+import com.example.tastychornomorsk.ui.TastyUiState
 import com.example.tastychornomorsk.ui.TastyViewModel
 import com.example.tastychornomorsk.ui.components.ItemsList
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
@@ -51,8 +53,6 @@ fun TastyChornomorskApp(
         backStackEntry?.destination?.route ?: TastyScreen.Start.name
     )
 
-    // ContentType
-
     val uiState by viewModel.uiState.collectAsState()
     Scaffold(
         topBar = {
@@ -65,43 +65,21 @@ fun TastyChornomorskApp(
             )
         }
     ) { innerPadding ->
+        when (windowSize) {
+            WindowWidthSizeClass.Compact -> {
+                TastyCompactView(
+                    viewModel = viewModel,
+                    uiState = uiState,
+                    navController = navController,
+                    modifier = modifier.padding(innerPadding)
+                )
+            }
 
-        NavHost(
-            navController = navController,
-            startDestination = TastyScreen.Start.name,
-            modifier = modifier.padding(innerPadding)
-        ) {
-            composable(TastyScreen.Start.name) {
-                ItemsList(
-                    items = uiState.categoriesList,
-                    onClick = {
-                        viewModel.updateCurrentCategory(it)
-                        navController.navigate(TastyScreen.Places.name)
-                    }
-                ) { category, onItemClick ->
-                    CategoryListItem(
-                        category = category,
-                        onItemClick = onItemClick
-                    )
-                }
-            }
-            composable(TastyScreen.Places.name) {
-                ItemsList(
-                    items = uiState.currentPlacesList!!, // TODO: Getting different lists(map?) from viewModel
-                    onClick = {
-                        viewModel.updateCurrentPlace(it)
-                        navController.navigate(TastyScreen.Place.name)
-                    }
-                ) { place, onItemClick ->
-                    PlacesListItem(
-                        place = place,
-                        onItemClick = onItemClick
-                    )
-                }
-            }
-            composable(TastyScreen.Place.name) {
-                PlaceDetail(
-                    selectedPlace = uiState.currentPlace!!
+            WindowWidthSizeClass.Expanded -> {
+                TastyExpandedView(
+                    viewModel = viewModel,
+                    uiState = uiState,
+                    modifier = modifier.padding(innerPadding)
                 )
             }
         }
@@ -149,25 +127,125 @@ fun TastyAppBar(
     )
 }
 
-@Preview(showBackground = true)
 @Composable
-fun SportsAppCompactLightPreview() {
-    TastyChornomorskTheme {
-        Surface {
-            TastyChornomorskApp(
-                windowSize = WindowWidthSizeClass.Compact
+fun TastyCompactView(
+    viewModel: TastyViewModel,
+    uiState: TastyUiState,
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = TastyScreen.Start.name,
+        modifier = modifier
+    ) {
+        composable(TastyScreen.Start.name) {
+            ItemsList(
+                items = uiState.categoriesList,
+                onClick = {
+                    navController.navigate(TastyScreen.Places.name)
+                    viewModel.updateCurrentCategory(it)
+                }
+            ) { category, onItemClick ->
+                CategoryListItem(
+                    category = category,
+                    onItemClick = onItemClick
+                )
+            }
+        }
+        composable(TastyScreen.Places.name) {
+            ItemsList(
+                items = uiState.currentPlacesList!!,
+                onClick = {
+                    navController.navigate(TastyScreen.Place.name)
+                    viewModel.updateCurrentPlace(it)
+                }
+            ) { place, onItemClick ->
+                PlacesListItem(
+                    place = place,
+                    onItemClick = onItemClick
+                )
+            }
+        }
+        composable(TastyScreen.Place.name) {
+            PlaceDetail(
+                selectedPlace = uiState.currentPlace!!
             )
         }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun SportsAppCompactDarkPreview() {
-    TastyChornomorskTheme(darkTheme = true) {
+fun TastyExpandedView(
+    viewModel: TastyViewModel,
+    uiState: TastyUiState,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+    ) {
+        ItemsList(
+            items = uiState.categoriesList,
+            onClick = {
+                viewModel.updateCurrentCategory(it)
+            },
+            modifier = Modifier.weight(1f)
+        ) { category, onItemClick ->
+            CategoryListItem(
+                category = category,
+                onItemClick = onItemClick
+            )
+        }
+        ItemsList(
+            items = uiState.currentPlacesList!!,
+            onClick = {
+                viewModel.updateCurrentPlace(it)
+            },
+            modifier = Modifier.weight(1f)
+        ) { place, onItemClick ->
+            PlacesListItem(
+                place = place,
+                onItemClick = onItemClick
+            )
+        }
+        PlaceDetail(
+            selectedPlace = uiState.currentPlace!!,
+            modifier = Modifier.weight(1f)
+        )
+    }
+}
+
+//@Preview(showBackground = true)
+//@Composable
+//fun TastyAppCompactLightPreview() {
+//    TastyChornomorskTheme {
+//        Surface {
+//            TastyChornomorskApp(
+//                windowSize = WindowWidthSizeClass.Compact
+//            )
+//        }
+//    }
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun TastyAppCompactDarkPreview() {
+//    TastyChornomorskTheme(darkTheme = true) {
+//        Surface {
+//            TastyChornomorskApp(
+//                windowSize = WindowWidthSizeClass.Compact
+//            )
+//        }
+//    }
+//}
+
+@Preview(showBackground = true, widthDp = 1000)
+@Composable
+fun TastyAppExpandedPreview() {
+    TastyChornomorskTheme {
         Surface {
             TastyChornomorskApp(
-                windowSize = WindowWidthSizeClass.Compact
+                windowSize = WindowWidthSizeClass.Expanded
             )
         }
     }
