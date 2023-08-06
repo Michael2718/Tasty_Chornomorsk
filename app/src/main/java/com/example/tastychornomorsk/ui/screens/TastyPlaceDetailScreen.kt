@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
@@ -29,6 +29,7 @@ import com.example.tastychornomorsk.R
 import com.example.tastychornomorsk.data.LocalPlacesDataProvider
 import com.example.tastychornomorsk.model.LinkType
 import com.example.tastychornomorsk.model.Place
+import com.example.tastychornomorsk.model.PlaceCategoryType
 import com.example.tastychornomorsk.ui.components.InfoCard
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
 
@@ -49,9 +50,10 @@ fun PlaceDetail(
                 painter = painterResource(selectedPlace.imageResourceId),
                 contentDescription = stringResource(selectedPlace.nameResourceId),
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .wrapContentSize()
+                    .fillMaxSize(),
                 alignment = Alignment.Center,
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.FillWidth
             )
         }
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
@@ -124,7 +126,8 @@ fun PlaceDetailPreview() {
     TastyChornomorskTheme {
         Surface {
             PlaceDetail(
-                selectedPlace = LocalPlacesDataProvider.defaultPlace!!,
+                selectedPlace = LocalPlacesDataProvider
+                    .getPlacesDataMap()[PlaceCategoryType.Pizza]!![0],
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
             )
         }
