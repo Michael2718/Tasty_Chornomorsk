@@ -105,10 +105,9 @@ fun PlaceDetail(
                     }
                 ) {
                     Icon(
-                        painter = if (selectedPlace.linkType == LinkType.Instagram) {
-                            painterResource(R.drawable.instagram_96)
-                        } else {
-                            painterResource(R.drawable.globe_96)
+                        painter = when (selectedPlace.linkType) {
+                            LinkType.Instagram -> painterResource(R.drawable.instagram_96)
+                            LinkType.Website -> painterResource(R.drawable.globe_96)
                         },
                         contentDescription = null,
                         modifier = Modifier.fillMaxSize()

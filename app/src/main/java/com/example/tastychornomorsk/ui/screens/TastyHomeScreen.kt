@@ -53,17 +53,18 @@ fun TastyChornomorskApp(
 
     // ContentType
 
+    val uiState by viewModel.uiState.collectAsState()
     Scaffold(
         topBar = {
             TastyAppBar(
                 currentScreen = currentScreen,
+                uiState.currentPlace!!.nameResourceId,
                 canNavigateBack = navController.previousBackStackEntry != null,
                 navigateUp = { navController.navigateUp() },
                 windowSize = windowSize
             )
         }
     ) { innerPadding ->
-        val uiState by viewModel.uiState.collectAsState()
 
         NavHost(
             navController = navController,
@@ -111,6 +112,7 @@ fun TastyChornomorskApp(
 @Composable
 fun TastyAppBar(
     currentScreen: TastyScreen,
+    @StringRes currentPlaceNameResourceId: Int,
     canNavigateBack: Boolean,
     navigateUp: () -> Unit,
     windowSize: WindowWidthSizeClass,
@@ -119,7 +121,10 @@ fun TastyAppBar(
     TopAppBar(
         title = {
             Text(
-                text = stringResource(currentScreen.title),
+                text = when (currentScreen) {
+                    TastyScreen.Place -> stringResource(currentPlaceNameResourceId)
+                    else -> stringResource(currentScreen.title)
+                },
                 fontWeight = FontWeight.Bold
             )
         },
