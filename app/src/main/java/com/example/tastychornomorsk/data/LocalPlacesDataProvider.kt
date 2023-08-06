@@ -48,7 +48,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_metropolis_terrace_address,
                 linkResourceId = R.string.places_metropolis_terrace_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_metropolis_terrace
             ),
             Place(
                 id = 4,
@@ -58,7 +58,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_milen_address,
                 linkResourceId = R.string.places_milen_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_milen
             ),
             Place(
                 id = 5,
@@ -68,7 +68,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_polunitsa_address,
                 linkResourceId = R.string.places_polunitsa_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_polunitsa
             ),
             Place(
                 id = 6,
@@ -78,7 +78,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_all_day_address,
                 linkResourceId = R.string.places_all_day_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_all_day
             ),
             Place(
                 id = 7,
@@ -88,7 +88,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_smachna_hata_address,
                 linkResourceId = R.string.places_smachna_hata_link,
                 linkType = LinkType.Website,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_smachna_hata
             ),
             Place(
                 id = 8,
@@ -98,7 +98,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_street_chef_address,
                 linkResourceId = R.string.places_street_chef_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_street_chef
             ),
             Place(
                 id = 9,
@@ -108,7 +108,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_pepper_point_address,
                 linkResourceId = R.string.places_pepper_point_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_pepper_point
             ),
             Place(
                 id = 10,
@@ -118,7 +118,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_pizza_na_drovah_pich_address,
                 linkResourceId = R.string.places_pizza_na_drovah_pich_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_pizza_na_drovah_pich
             ),
             Place(
                 id = 11,
@@ -128,7 +128,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_dominos_pizza_address,
                 linkResourceId = R.string.places_dominos_pizza_link,
                 linkType = LinkType.Website,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_dominos_pizza
             ),
             Place(
                 id = 12,
@@ -138,7 +138,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_zhar_pizza_address,
                 linkResourceId = R.string.places_zhar_pizza_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_zhar_pizza
             ),
             Place(
                 id = 13,
@@ -148,7 +148,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_osama_address,
                 linkResourceId = R.string.places_osama_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_osama
             ),
             Place(
                 id = 14,
@@ -158,7 +158,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_budusushi_address,
                 linkResourceId = R.string.places_budusushi_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_budusushi
             ),
             Place(
                 id = 15,
@@ -168,7 +168,7 @@ object LocalPlacesDataProvider {
                 addressResourceId = R.string.places_sushizoom_address,
                 linkResourceId = R.string.places_sushizoom_link,
                 linkType = LinkType.Instagram,
-                imageResourceId = R.drawable.places_afalina
+                imageResourceId = R.drawable.places_sushizoom
             )
         )
     }
