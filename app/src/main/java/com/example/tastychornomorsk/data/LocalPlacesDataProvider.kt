@@ -174,6 +174,6 @@ object LocalPlacesDataProvider {
     }
 
     fun getPlacesListSizeByType(type: PlaceCategoryType): Int {
-        return getPlacesDataMap()[PlaceCategoryType.Restaurant]!!.size
+        return getPlacesDataMap()[type]!!.size
     }
 }
