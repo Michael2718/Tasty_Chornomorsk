@@ -27,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tastychornomorsk.R
 import com.example.tastychornomorsk.data.LocalPlacesDataProvider
+import com.example.tastychornomorsk.model.LinkType
 import com.example.tastychornomorsk.model.Place
 import com.example.tastychornomorsk.ui.components.InfoCard
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
@@ -104,7 +105,11 @@ fun PlaceDetail(
                     }
                 ) {
                     Icon(
-                        painter = painterResource(R.drawable.instagram_96),
+                        painter = if (selectedPlace.linkType == LinkType.Instagram) {
+                            painterResource(R.drawable.instagram_96)
+                        } else {
+                            painterResource(R.drawable.globe_96)
+                        },
                         contentDescription = null,
                         modifier = Modifier.fillMaxSize()
                     )
