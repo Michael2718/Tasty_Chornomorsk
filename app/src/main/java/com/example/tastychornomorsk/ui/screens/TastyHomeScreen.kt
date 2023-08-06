@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -74,7 +73,6 @@ fun TastyChornomorskApp(
                     modifier = modifier.padding(innerPadding)
                 )
             }
-
             WindowWidthSizeClass.Expanded -> {
                 TastyExpandedView(
                     viewModel = viewModel,
@@ -82,6 +80,15 @@ fun TastyChornomorskApp(
                     modifier = modifier.padding(innerPadding)
                 )
             }
+            else -> {
+                TastyCompactView(
+                    viewModel = viewModel,
+                    uiState = uiState,
+                    navController = navController,
+                    modifier = modifier.padding(innerPadding)
+                )
+            }
+
         }
     }
 }
@@ -120,7 +127,7 @@ fun TastyAppBar(
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
-            titleContentColor = Color.Green,
+//            titleContentColor = Color.Green,
             navigationIconContentColor = MaterialTheme.colorScheme.surface,
             actionIconContentColor = MaterialTheme.colorScheme.onPrimary
         )
