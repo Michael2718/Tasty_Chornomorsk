@@ -63,13 +63,14 @@ fun CategoryListItem(
                     text = stringResource(
                         getStringResourceIdFromCategoryEnum(category.type)
                     ),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(bottom = dimensionResource(R.dimen.card_text_vertical_space))
+                    modifier = Modifier.padding(bottom = dimensionResource(R.dimen.card_text_vertical_space)),
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = MaterialTheme.typography.titleMedium
                 )
                 Text(
                     text = stringResource(R.string.places_count, category.count),
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.secondary,
+//                    color = MaterialTheme.colorScheme.secondary,
                     overflow = TextOverflow.Ellipsis
                 )
             }

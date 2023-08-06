@@ -64,13 +64,14 @@ fun PlacesListItem(
                     text = stringResource(place.nameResourceId),
                     modifier = Modifier
                         .padding(bottom = dimensionResource(R.dimen.card_text_vertical_space)),
+                    color = MaterialTheme.colorScheme.secondary,
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
                     text = stringResource(place.detailsResourceId),
                     modifier = Modifier
                         .padding(bottom = dimensionResource(R.dimen.card_text_vertical_space)),
-                    color = MaterialTheme.colorScheme.secondary,
+//                    color = MaterialTheme.colorScheme.secondary,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodySmall,
                 )

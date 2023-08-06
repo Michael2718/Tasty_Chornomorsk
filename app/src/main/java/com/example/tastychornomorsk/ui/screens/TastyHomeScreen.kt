@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,8 +29,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.tastychornomorsk.R
-import com.example.tastychornomorsk.ui.components.ItemsList
 import com.example.tastychornomorsk.ui.TastyViewModel
+import com.example.tastychornomorsk.ui.components.ItemsList
 import com.example.tastychornomorsk.ui.theme.TastyChornomorskTheme
 
 enum class TastyScreen(@StringRes val title: Int) {
@@ -38,7 +39,6 @@ enum class TastyScreen(@StringRes val title: Int) {
     Place(title = R.string.place)
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TastyChornomorskApp(
     windowSize: WindowWidthSizeClass,
@@ -125,9 +125,11 @@ fun TastyAppBar(
                     TastyScreen.Place -> stringResource(currentPlaceNameResourceId)
                     else -> stringResource(currentScreen.title)
                 },
+                color = MaterialTheme.colorScheme.surface,
                 fontWeight = FontWeight.Bold
             )
         },
+        modifier = modifier,
         navigationIcon = {
             if (canNavigateBack && windowSize != WindowWidthSizeClass.Expanded) {
                 IconButton(onClick = navigateUp) {
@@ -138,20 +140,31 @@ fun TastyAppBar(
                 }
             }
         },
-        colors = TopAppBarDefaults.mediumTopAppBarColors(
+        colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
-            titleContentColor = MaterialTheme.colorScheme.onPrimary,
-            navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+            titleContentColor = Color.Green,
+            navigationIconContentColor = MaterialTheme.colorScheme.surface,
             actionIconContentColor = MaterialTheme.colorScheme.onPrimary
-        ),
-        modifier = modifier
+        )
     )
 }
 
-@Preview(showBackground = true, locale = "uk")
+@Preview(showBackground = true)
 @Composable
-fun SportsAppCompactPreview() {
+fun SportsAppCompactLightPreview() {
     TastyChornomorskTheme {
+        Surface {
+            TastyChornomorskApp(
+                windowSize = WindowWidthSizeClass.Compact
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SportsAppCompactDarkPreview() {
+    TastyChornomorskTheme(darkTheme = true) {
         Surface {
             TastyChornomorskApp(
                 windowSize = WindowWidthSizeClass.Compact

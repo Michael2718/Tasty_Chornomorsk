@@ -123,7 +123,7 @@ fun PlaceDetail(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PlaceDetailPreview() {
-    TastyChornomorskTheme {
+    TastyChornomorskTheme(darkTheme = true) {
         Surface {
             PlaceDetail(
                 selectedPlace = LocalPlacesDataProvider
